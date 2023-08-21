@@ -1,0 +1,141 @@
+﻿@model IEnumerable<WebApplication1.Models.Parcel>
+
+@{
+    ViewData["Title"] = "ViewDMParcelList";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DM PArcel List</title>
+
+    <!-- CSS File -->
+   
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+<header class="header">
+    @await Html.PartialAsync("~/Views/Home/_DMMenu.cshtml")
+</header>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <br >
+                <br >
+                <br >
+                <br >
+                <th>ID</th>
+                <th>Item Description</th>
+                <th>Delivery Address</th>
+                <th>From City</th>
+                <th>To City</th>
+                <th>Target Delivery Date</th>
+                <th>Delivery Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach (var parcel in Model)
+            {
+                <tr>
+                    <td>@parcel.ParcelID</td>
+                    <td>@parcel.ItemDescription</td>
+                    <td>@parcel.DeliveryAddress</td>
+                    <td>@parcel.FromCity</td>
+                    <td>@parcel.ToCity</td>
+                    <td>@parcel.TargetDeliveryDate</td>
+                    <td>@parcel.DeliveryStatus</td>
+                    <td>
+                        <a href="@Url.Action("AddDeliveryHistoryDM", new { id = parcel.DeliveryStatus })">Complete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!--
+<table class="table">
+    <thead>
+            
+        <tr>
+                <br >
+                <br >
+                <br >
+            <th>
+                @Html.DisplayNameFor(model => model.ParcelID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetDeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ParcelID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetDeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+            </td>
+            <td>
+                    @Html.ActionLink("Update", "UpdateDevStatus", new { /* id=item.PrimaryKey */ }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    -->
+</body>

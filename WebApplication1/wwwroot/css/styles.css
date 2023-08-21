@@ -1,0 +1,166 @@
+﻿/* Import Google font - Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    z-index: 100;
+    padding: 0 20px;
+    background-color: transparent; /* Set the background color to transparent */
+}
+
+.nav {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%; /* Set the height to 100% to fill the header height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav_logo,
+.nav_link,
+.button {
+    color: #fff;
+}
+
+.nav_logo {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.nav_item {
+    column-gap: 25px;
+    padding-bottom: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    padding: 6px 24px;
+    border: 2px solid #fff;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .button:active {
+        transform: scale(0.98);
+    }
+/* Header */
+
+/* Home */
+.home {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../images/test.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+}
+
+    .home h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 6rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .home p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.7rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        text-transform: none;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    .home::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease-out;
+    }
+
+    .home.show::before {
+        opacity: 1;
+        pointer-events: auto;
+    }
+/* Home */
+
+/* Login */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+    min-width: 120px;
+}
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+.dropdown-item {
+    padding: 8px 16px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .dropdown-item:hover {
+        background-color: #f0f0f0;
+    }
+/* Login */

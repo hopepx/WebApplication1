@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "StaffLogin";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<header class="header">
+    @await Html.PartialAsync("_MainMenu.cshtml")
+</header>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="~/css/stafflogin.css" asp-append-version="true" />
+    <title>Sign Up | Login Form</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="user login">
+                <div class="img-box">
+                    <img src="/images/staff.jpg" alt="" />
+                </div>
+                <div class="form-box">
+                    <form method="post" action="~/Home/LoginStaff">
+                        <div class="form-control">
+                            <h2>Staff Login</h2>
+                            <p>Sign In to your Staff Account!</p>
+                            <input type="text" name="txtLoginID" placeholder="Enter ID" id="txtLoginID" />
+                            <div>
+                                <input type="password" name="txtPassword" placeholder="Password" id="txtPassword" />
+                                <div class="icon form-icon">
+                                </div>
+                            </div> 
+                            <input type="Submit" value="Login" />
+                        </div>
+                        <br /> 
+							<span style="color:red;">@TempData["Message"]</span>
+                <p class="stafflogin">
+                    <span>Not a Staff? <a href="~/Home/MemberLogin">Login as a Member</a></span
+                </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Js Section -->
+    <script src="~/js/loginsignup.js" asp-append-version="true"></script>
+</body>
+</html>
+

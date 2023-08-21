@@ -1,0 +1,74 @@
+﻿@model WebApplication1.Models.FeedbackEnquiry
+
+@{
+    ViewData["Title"] = "RespondToFeedback";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Respond To Feedback</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/respondtofeedback.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backnavbar.css" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header class="header">
+        @await Html.PartialAsync("~/Views/Home/_SMMenu.cshtml")
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="breadcrumbs">
+        &nbsp; <a href="~/Home/Dashboard">Home</a> >
+        <a href="~/ParcelTracking/ViewFeedbackManagement"> Feedback Management </a> >
+        <a href="~/ParcelTracking/RespondToFeedback">Respond To Feedback </a>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <p><strong>Feedback Enquiry ID:</strong> @Model.FeedbackEnquiryID</p>
+            <p><strong>Feedback Message:</strong> @Model.Content</p>
+            <p><strong>DateTimePosted:</strong> @Model.DateTimePosted</p>
+
+            <form method="post" asp-action="SubmitResponse">
+                <input type="hidden" asp-for="FeedbackEnquiryID" />
+                <div class="form-group">
+                    <label asp-for="Response">Response:</label>
+                    <textarea class="form-control" asp-for="Response"></textarea>
+                    <span asp-validation-for="Response" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Response</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/js/respondtofeedback.js" asp-append-version="true"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "ComputeTargetDeliveryDate";
+    string parcelInfo = ViewData["ParcelInfo"] as string;
+    TempData.Keep("ParcelInfo");
+    string parcelDeliveryCharge = ViewData["ParcelDeliveryCharge"] as string;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compute Target Delivery Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .block-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+            .block-heading h1, .block-heading h2 {
+                color: #3b99e0;
+            }
+
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            border-bottom: 2px solid #5ea4f3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .products {
+            background-color: #fff;
+            border: 2px solid #5ea4f3;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            float: right;
+        }
+
+        .breadcrumbs {
+            background-color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+
+            .breadcrumbs a {
+                color: #3b99e0;
+                text-decoration: none;
+            }
+
+                .breadcrumbs a:hover {
+                    text-decoration: underline;
+                }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3b99e0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #5ea4f3;
+        }
+
+        .mt-4 {
+            margin-top: 20px;
+        }
+
+        .total {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            padding-top: 10px;
+            font-weight: 600;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/backnavbar.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+    <header class="header">
+        @await Html.PartialAsync("~/Views/Home/_FOSMenu.cshtml")
+    </header>
+
+    <div class="breadcrumbs">
+        <a href="~/Home/Dashboard">Home</a> >
+        <a href="~/ParcelReceiving/CreateParcel">Orders</a> >
+        <a href="~/ParcelReceiving/ComputeTargetDeliveryDate">Rates</a>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="block-heading">
+        </div>
+        <form>
+            <div class="products">
+                <h3 class="title">Parcel Details</h3>
+                <div class="item">
+                    <pre>@parcelInfo</pre>
+                </div>
+
+                <div class="total">Total:<span class="price">@parcelDeliveryCharge</span></div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="center mt-4">
+        <a class="btn btn-primary" href="@Url.Action("CreatePaymentTransaction", "ParcelReceiving")">Proceed to Payment</a>
+    </div>
+
+</body>
+</html>

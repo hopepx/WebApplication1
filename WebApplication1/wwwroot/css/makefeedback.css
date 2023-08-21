@@ -1,0 +1,165 @@
+﻿.feedback-section {
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    padding: 40px;
+    text-align: center;
+}
+
+.feedback-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.emoji-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.emoji {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.sad-face:hover,
+.neutral-face:hover,
+.happy-face:hover,
+.wow-face:hover,
+.love-face:hover {
+    transform: scale(1.2);
+}
+
+.feedback-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    resize: none;
+    height: 100px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #eaf5ff; /* Change to a light blue color */
+    border-radius: 4px; /* Add border-radius for rounded corners */
+    border: 1px solid #ccc; /* Add a border to give the textbox some distinction */
+}
+
+/* Add a style for the disabled textarea */
+.feedback-textarea:disabled {
+    background-color: #dce9f7; /* Change to a slightly darker blue for the disabled state */
+    color: #666; /* Add a color for the text in the disabled state */
+    cursor: not-allowed; /* Change cursor to not-allowed when disabled */
+}
+
+.emoji.selected {
+    border: 2px solid #3b99e0; /* Change the border color to your desired highlight color */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    padding: 5px; /* Add some padding to the emoji to create space around the border */
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+/* Response Section styles */
+
+.response-section {
+    background-color: #ffffff;
+    margin-top: 40px;
+}
+
+.response-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.response-card {
+    border: 1px solid #d9d9d9;
+    margin-bottom: 20px;
+}
+
+.response-card-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.response-card-time {
+    font-size: 14px;
+}
+
+.response-card-rating {
+    font-size: 24px;
+}
+
+.response-card-body {
+    padding: 10px;
+}
+
+.response-card-message {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.emoji.locked {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* makefeedback.css */
+
+.feedback-prompt {
+  display: none;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedback-prompt i {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.feedback-form textarea {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

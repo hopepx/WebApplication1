@@ -1,0 +1,104 @@
+﻿@model WebApplication1.Models.DeliveryFailure
+
+@{
+    ViewData["Title"] = "DeliveryFailureReportConfirmation";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Tracking</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/customertrackingtracked.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<header class="header">
+    @await Html.PartialAsync("~/Views/Home/_DMMenu.cshtml")
+</header>
+<br>
+<br>
+<h1>Delivery Failure Report Submitted!</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <div class="parcel-desc">
+            <label for="parcelId">Parcel ID:</label>
+            <label for="deliveryDate">Delivery Date: 2 March 2020</label>
+            <label for="place">Place: Local</label>
+        </div>
+        <div class="new-parcel-desc">
+            <label for="submissionTime">Time of submission: 16:09:56</label><br />
+            <label for="DeliveryDate">Delivery Date: 5 March 2020</label><br />
+        </div>
+        <div class="form-group">
+            <input type="button" value="View Submission" />
+            <input type="submit" value="Home" class="btn btn-primary" />
+        </div>
+        <!--
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReportID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReportID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ParcelID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ParcelID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DeliveryManID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryManID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FailureType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FailureType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StationMgrID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StationMgrID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FollowUpAction)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FollowUpAction)
+        </dd>
+        
+        -->
+    </dl>
+</div>
+

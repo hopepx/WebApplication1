@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WebApplication1.Models.FeedbackEnquiry>
+
+@{
+    ViewData["Title"] = "ViewFeedbackList";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Feedback List</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/viewfeedbacklist.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backnavbar.css" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        @await Html.PartialAsync("~/Views/Home/_CustomerMenu.cshtml")
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="breadcrumbs">
+        &nbsp; <a href="~/Home/Dashboard">Home</a> >
+        <a href="~/ParcelTracking/MakeFeedback"> Feedback </a> >
+        <a href="~/ParcelTracking/ViewFeedbackList">Feedback List </a>
+    </div>
+
+    @if (Model.ToList().Count > 0)
+    {
+        <div class="table-responsive">
+            <table id="viewStaff" class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Feedback Enquiry ID</th>
+                        <th>Feedback Message</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.MemberID == ViewBag.MemberId)
+                        {
+                            // Split DateTimePosted into Date and Time
+                            var datePosted = item.DateTimePosted.Date;
+                            var timePosted = item.DateTimePosted.TimeOfDay;
+
+                            <tr>
+                                <td>@item.FeedbackEnquiryID</td>
+                                <td>@item.Content</td>
+                                <td>@datePosted.ToString("d MMMM yyyy")</td>
+                                <td>@timePosted.ToString(@"hh\:mm\:ss")</td>
+                                <td>@GetFeedbackStatusText(@item.Status)</td>
+                                @if (item.Response != null)
+                                {
+                                    <td>@item.Response</td>
+                                }
+                                else
+                                {
+                                    <td><p>No Response Yet</p></td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <span style="color:red">No record found!</span>
+    }
+    <script src="~/js/MakeFeedback.js" asp-append-version="true"></script>
+</body>
+</html>
+
+@functions {
+    public string GetFeedbackStatusText(string feedbackStatus)
+    {
+        switch (feedbackStatus)
+        {
+            case "0":
+                return "Pending Response";
+            case "1":
+                return "Closed";
+            default:
+                return "";
+        }
+    }
+}

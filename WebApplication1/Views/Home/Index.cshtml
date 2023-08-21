@@ -1,0 +1,239 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+.question__button {
+  color: black; 
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.question__button:hover {
+  transform: rotate(90deg);
+}
+
+.faq-wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 88vh;
+}
+
+.faq-questions {
+  width: 80vw;
+  max-width: 600px;
+}
+
+.faq-questions header {
+  font-size: 1.8rem;
+  font-family: "Great Vibes", cursive;
+  color: black; 
+  text-align: center;
+}
+
+.faq-questions .question {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem 1rem 1rem;
+  border-radius: 7px;
+  font-family: "Open Sans", sans-serif;
+  background-color: white;
+  box-shadow: 4px 4px 8px #617d98;
+}
+
+.faq-questions .question__title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  color: black; /* Changed color to black */
+}
+
+.faq-questions .question__answer {
+  margin-top: 1rem;
+  padding: 0.7rem 0;
+  display: none;
+  border-top: 1px solid #617d98;
+  color: black; /* Changed color to black */
+}
+
+.show-answer .question__answer {
+  display: block;
+}
+
+.btn-minus {
+  display: none;
+}
+
+.show-answer .btn-minus {
+  display: block;
+}
+
+.show-answer .btn-plus {
+  display: none;
+}
+</style>
+
+<header class="header">
+    @await Html.PartialAsync("_MainMenu.cshtml")
+</header>
+
+<!-- Home Section Start -->
+<section class="home" id="home">
+    <h1>Enjoy the best parcel delivery experience</h1>
+    <p>We offer express parcel delivery services to over 30 countries.</p>
+    <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+    </div>
+</section>
+<!-- Home Section End -->
+
+<!-- About and FAQ Section Start -->
+<section class="w3l-grids-3 py-5" id="about">
+    <div class="container py-md-5 py-3">
+        <div class="row w3home-ab-grids">
+            <div class="w3ab-right-top col-lg-6 pe-lg-5">
+                <img src="/images/delivery.jpg" alt="" class="img-fluid radius-image">
+            </div>
+            <div class="w3ab-left-top col-lg-6 mt-lg-0 mt-4 pt-lg-0 pt-2">
+                <h5 class="title-subw3hny mb-1">We’re NP Courier Service!</h5>
+                <h4 class="title-w3l mb-2">Fast and reliable shipping services</h4>
+                <p class="my-3">
+                    NP Courier Service (NPCS), your trusted partner for express parcel delivery in over 30 countries. Our extensive network of front offices and delivery stations ensures that your parcels are received and delivered safely and efficiently.
+                </p>
+
+                <p class="my-3">
+                    We take pride in our fast and reliable shipping services, and are committed to constantly improving to provide you with the best experience.
+                </p>
+
+                <p class="my-3">
+                    At NP Courier Service, we are dedicated to ensuring the safe delivery of your parcels. We believe that your satisfaction is the cornerstone of our success.
+                </p>
+
+                <p class="my-3">
+                    Thank you for considering NP Courier Service for your shipping needs. We look forward to the opportunity to serve you and exceed your expectations.
+                </p>
+            </div>
+        </div>
+        <div class="faq-wrapper">
+            <section class="faq-questions" id="faq">
+                <header>
+                    <h1>Frequently Asked Questions</h1>
+                </header>
+
+                <div class="question">
+                    <div class="question__title">
+                        <p>What services does NP Courier Service offer?</p>
+                        <button class="question__button">
+                            <span class="btn-plus">
+                                <i class="far fa-plus-square"></i>
+                            </span>
+                            <span class="btn-minus">
+                                <i class="far fa-minus-square"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="question__answer">
+                        NP Courier Service offers fast and reliable express parcel delivery services to over 30 countries.
+                    </p>
+                </div>
+
+                <div class="question">
+                    <div class="question__title">
+                        <p>How can I track my parcel?</p>
+                        <button class="question__button">
+                            <span class="btn-plus">
+                                <i class="far fa-plus-square"></i>
+                            </span>
+                            <span class="btn-minus">
+                                <i class="far fa-minus-square"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="question__answer">
+                        To track your parcel, simply log in as a user on our website, and you'll have access to our easy-to-use parcel tracking system.
+                    </p>
+                </div>
+
+                <div class="question">
+                    <div class="question__title">
+                        <p>What is the mission of NP Courier Service?</p>
+                        <button class="question__button">
+                            <span class="btn-plus">
+                                <i class="far fa-plus-square"></i>
+                            </span>
+                            <span class="btn-minus">
+                                <i class="far fa-minus-square"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="question__answer">
+                        At NP Courier Service, our mission is to ensure the safe and timely delivery of your parcels. Your satisfaction is the cornerstone of our success, and we are committed to constantly improving our services to provide you with the best experience.
+                    </p>
+                </div>
+
+                <div class="question">
+                    <div class="question__title">
+                        <p>How can I contact NP Courier Service customer support?</p>
+                        <button class="question__button">
+                            <span class="btn-plus">
+                                <i class="far fa-plus-square"></i>
+                            </span>
+                            <span class="btn-minus">
+                                <i class="far fa-minus-square"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="question__answer">
+                        You can easily reach our customer support team through phone and email. Our dedicated team is available to assist you with any inquiries or concerns you may have.
+                    </p>
+                </div>
+
+                <div class="question">
+                    <div class="question__title">
+                        <p>What makes NP Courier Service stand out from other shipping providers?</p>
+                        <button class="question__button">
+                            <span class="btn-plus">
+                                <i class="far fa-plus-square"></i>
+                            </span>
+                            <span class="btn-minus">
+                                <i class="far fa-minus-square"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="question__answer">
+                        At NP Courier Service, we take pride in our commitment to excellence in service. With an extensive network of front offices and delivery stations, we ensure swift and efficient delivery of your parcels. We continuously strive to improve our services to offer you the best parcel delivery experience. Your satisfaction is our top priority, and we are dedicated to exceeding your expectations.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!-- About and FAQ Section End -->
+
+<script>
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach((question) => {
+        const title = question.querySelector(".question__title");
+        const btn = question.querySelector(".question__button");
+        const answer = question.querySelector(".question__answer");
+
+        function showAnswer() {
+            // Toggle 'show-answer' class for the clicked question
+            question.classList.toggle("show-answer");
+
+            // Close other questions if they are open
+            questions.forEach((item) => {
+                if (item !== question && item.classList.contains("show-answer")) {
+                    item.classList.remove("show-answer");
+                }
+            });
+        }
+
+        title.addEventListener("click", showAnswer);
+    });
+</script>
+
+

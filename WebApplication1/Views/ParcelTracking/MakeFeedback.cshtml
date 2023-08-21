@@ -1,0 +1,103 @@
+﻿@model WebApplication1.Models.FeedbackEnquiry
+
+@{
+    ViewData["Title"] = "MakeFeedback";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make Feedback</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/makefeedback.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backnavbar.css" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        @await Html.PartialAsync("~/Views/Home/_CustomerMenu.cshtml")
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="breadcrumbs">
+        &nbsp; <a href="~/Home/Dashboard">Home</a> >
+        <a href="~/ParcelTracking/MakeFeedback">Feedback </a>
+    </div>
+
+    <section class="feedback-section">
+        <div class="container">
+            <div class="wrapper">
+                <!-- Add the button for navigating to the feedback list page -->
+                <a href="~/ParcelTracking/ViewFeedbackList" class="view-feedback-button">View Feedback List</a>
+                <br>
+                <br>
+                <h2 class="feedback-heading">How Would You Rate Our Service?</h2>
+                <div class="emoji-row">
+                    <span class="emoji sad-face" data-emoji="&#x1F61E;">&#x1F61E;</span>
+                    <span class="emoji neutral-face" data-emoji="&#x1F610;">&#x1F610;</span>
+                    <span class="emoji happy-face" data-emoji="&#x1F60A;">&#x1F60A;</span>
+                    <span class="emoji wow-face" data-emoji="&#x1F62E;">&#x1F62E;</span>
+                    <span class="emoji love-face" data-emoji="&#x1F60D;">&#x1F60D;</span>
+                </div>
+
+                <form method="post" asp-action="MakeFeedback">
+                    <fieldset class="FormContent" id="entry">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8 col-md-9">
+                                <div class="col-md-13">
+                                    <textarea asp-for="Content" class="form-control centered-textarea" placeholder="Type your feedback or enquiry here..."></textarea>
+                                    <span asp-validation-for="Content" class="text-danger"></span>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-13">
+                                        <button type="submit" id="submitBtn" class="btn btn-primary d-block mx-auto my-2 text-center">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Prompt -->
+    <section class="feedback-prompt" id="feedbackPrompt">
+        <div class="container">
+            <div class="wrapper">
+                <p>
+                    Feedback submitted! <br>
+                    Thank you for your feedback.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/js/MakeFeedback.js" asp-append-version="true"></script>
+</body>
+</html>
+

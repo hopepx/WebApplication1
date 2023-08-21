@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<header class="header">
+    @await Html.PartialAsync("~/Views/Home/_CustomerMenu.cshtml")
+</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NP Courier Service</title>
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backnavbar.css" />
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="breadcrumbs">
+        &nbsp; <a href="~/Home/Dashboard">Home</a> >
+        <a href="~/ParcelTracking/Contact">Contact </a>
+    </div>
+
+    <section class="contact section container" id="contact">                
+        <div class="contact__container grid">
+            <div class="contact__box">
+                <h2 class="section__title">
+                    Contact our team today to get in touch with us. <br>
+                    We're here to assist you promptly and reliably.
+                </h2>
+
+                <div class="contact__data">
+                    <div class="contact__information">
+                        <h3 class="contact__subtitle"><i class="fas fa-headset mt-2"></i> Call us for instant support</h3>
+                        <span class="contact__description">
+                            <p><a href="tel:+65 9696-6969">+65 9696-6969</a></p>
+                        </span>
+                    </div>
+
+                    <div class="contact__information">
+                        <h3 class="contact__subtitle"><i class="fas fa-envelope"></i> Write us by mail</h3>
+                        <span class="contact__description">
+                            <p class="email-address"><a href="mailto:mailNP@courierservice.com">NP@courierservice.com</a></p>
+                        </span>
+                    </div>
+                    
+                    <div class="contact__information">
+                        <h3 class="contact__subtitle"><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                        <span class="contact__description">
+                            <a href="https://www.google.com/maps/place/Ngee+Ann+Polytechnic/,103.7721579,17z/data=!3m2!4b1!5s0x31da1a097bea89d3:0xd95cfcb7e29a3119!4m6!3m5!1s0x31da107d8eb4e359:0x75d2e7ffdeeb0c43!8m2!3d1.3321036!4d103.7743466!16zL20vMDU0NTF5">Ngee Ann Polytechnic, 535 Clementi Rd, Singapore 599489</a>
+                        </span>
+                    </div>
+                    
+                    
+                    
+
+                    <div class="contact__information"><br>
+                        <h3 class="contact__subtitle"><i class="far fa-clock"></i> Opening Hours</h3>
+                        <span class="contact__description">
+                            <p>Mon - Fri: 9:00am - 7:00pm</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <div class="contact__content">
+                        <input type="name" placeholder=" " class="contact__input">
+                        <label for="" class="contact__label">Name</label>
+                    </div>
+                    <br><br><br>
+                    <div class="contact__content">
+                        <input type="email" placeholder=" " class="contact__input">
+                        <label for="" class="contact__label">Email</label>
+                    </div>
+                    <br><br><br>
+                    <div class="contact__content">
+                        <input type="text" placeholder=" " class="contact__input">
+                        <label for="" class="contact__label">Subject</label>
+                    </div>
+                    <br><br><br>
+                    <div class="contact__content">
+                        <input type="text" pattern="\+65\s\d{4}\s\d{4}" placeholder=" " required class="contact__input">
+                        <label for="" class="contact__label">Phone Number</label>
+                    </div>
+                    <br><br><br>
+                    <div class="contact__content contact__area">
+                        <textarea name="message" placeholder=" " class="contact__input" style="height: 69px;width: 455px;"></textarea>                            
+                        <label for="" class="contact__label">Message</label>
+                    </div>
+                </div>
+                <br><br><br>
+                <button class="button button--flex">
+                    Send Message
+                    <i class="ri-arrow-right-up-line button__icon"></i>
+                </button>
+            </form>
+            
+    </div>
+    </section>
+
+    </body>

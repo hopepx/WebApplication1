@@ -1,0 +1,142 @@
+﻿@model WebApplication1.Models.Member
+
+@{
+    ViewData["Title"] = "MemberSignUp";
+}
+<!DOCTYPE html>
+<html lang="en">
+<header class="header">
+    @await Html.PartialAsync("_MainMenu.cshtml")
+</header>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="~/css/membersignup.css" asp-append-version="true" />
+    
+
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section class="container">
+        <header>Registration Form</header>
+        <form asp-action="MemberSignUp" class="form" method="post" onsubmit="validateForm(event)">
+            <div class="input-box">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter full name" required asp-for="Name" />
+                @Html.ValidationMessageFor(model => model.Name)
+            
+
+            <div class="input-box">
+                <label>Email Address</label>
+                <input type="text" placeholder="Enter email address" required asp-for="EmailAddr" />
+                @Html.ValidationMessageFor(model => model.EmailAddr)
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="Enter phone number" required asp-for="TelNo" />
+                    @Html.ValidationMessageFor(model => model.TelNo)
+                </div>
+                <div class="input-box">
+                    <label>Birth Date</label>
+                    <input type="date" placeholder="Enter birth date" required asp-for="BirthDate" />
+                    @Html.ValidationMessageFor(model => model.BirthDate)
+                </div>
+            </div>
+            <div class="gender-box">
+                <h3>Salutation</h3>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input asp-for="Salutation" type="radio" value="Mr" id="check-mr" checked>
+                        <label for="check-mr">Mr</label>
+                    </div>
+                    <div class="gender">
+                        <input asp-for="Salutation" type="radio" value="Ms" id="check-ms">
+                        <label for="check-ms">Ms</label>
+                    </div>
+                    <div class="gender">
+                        <input asp-for="Salutation" type="radio" value="Mrs" id="check-mrs">
+                        <label for="check-mrs">Mrs</label>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.Salutation)
+            </div>
+
+                <div class="input-box address">
+                    <label>Address</label>
+                    <div class="address-container">
+                        <div class="select-box">
+                            <select asp-for="City" required id="toCitySelect" class="input">
+                                <option value="" disabled selected hidden>Enter City</option>
+                                @foreach (var cityAndCountry in ViewBag.CityAndCountryList)
+                                {
+                                    var city = cityAndCountry.Split(',')[0].Trim();
+                                    <option value="@city">@city</option>
+                                }
+                            </select>
+                        </div>
+                        <input asp-for="Country" type="text" placeholder="Your Country" readonly required id="toCountryInput" class="input">
+                    </div>
+                </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="passwordInput" placeholder="Enter password" required asp-for="Password" />
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="input-box">
+                <label>Retype Password</label>
+                <input type="password" id="confirmPasswordInput" placeholder="Retype password" required />
+            </div>
+            <button type="submit">Submit</button>
+            <br><br>
+            <p class="register">
+                <span>Already a member? <a href="~/Home/MemberLogin">Login Now</a></span>
+            </p>
+
+        </form>
+    </section>
+        
+
+
+    <!-- Signup Js Section -->
+    <script src="~/js/signup.js" asp-append-version="true"></script>
+</body>
+</html>
+
+<script>
+    // Update ToCountry based on selected ToCity
+    var toCitySelect = document.getElementById('toCitySelect');
+    var toCountryInput = document.getElementById('toCountryInput');
+
+    toCitySelect.addEventListener('change', function () {
+        var selectedCity = this.value;
+        var cityAndCountryList = @Html.Raw(Json.Serialize(ViewBag.CityAndCountryList));
+
+        for (var i = 0; i < cityAndCountryList.length; i++) {
+            var cityAndCountry = cityAndCountryList[i];
+            var city = cityAndCountry.split(',')[0].trim();
+            var country = cityAndCountry.split(',')[1].trim();
+
+            if (city === selectedCity) {
+                toCountryInput.value = country;
+                break;
+            }
+        }
+    });
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

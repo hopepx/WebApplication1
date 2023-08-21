@@ -1,0 +1,175 @@
+﻿@model List<WebApplication1.Models.Parcel>
+
+@{
+    ViewData["Title"] = "CustomerTracking";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Tracking</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/customertracking.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+            @await Html.PartialAsync("~/Views/Home/_CustomerMenu.cshtml")
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="search-wrapper">
+        <i class="search-icon bx bx-search"></i>
+        <input type="search" id="search" data-search placeholder="Search">
+    </div>
+
+    <div class="user-cards" data-user-cards-container>
+
+        @foreach (var parcel in Model)  @* Loop through the list of parcels *@
+        {
+            <div class="card" data-user-id="@parcel.ParcelID">
+                @* Use ParcelID as the data-user-id *@
+                <div class="head" data-head>@parcel.SenderName</div>  @* Display sender name as head *@
+                <div class="body" data-body>
+                    <p> Parcel ID: @parcel.ParcelID</p>  @* Display ParcelID as a paragraph *@
+                    <p>Status: @GetDeliveryStatusText(@parcel.DeliveryStatus)</p>  @* Display DeliveryStatus as a paragraph *@
+                    <p>Sender: @parcel.SenderName</p>  @* Display SenderName as a paragraph *@
+                    <p>Receiver: @parcel.ReceiverName</p>  @* Display ReceiverName as a paragraph *@
+                    <p>Delivery address: @parcel.DeliveryAddress</p>  @* Display DeliveryAddress as a paragraph *@
+                    <p>From City: @parcel.FromCity</p>  @* Display FromCity as a paragraph *@
+                    <p>To City: @parcel.ToCity</p>  @* Display ToCity as a paragraph *@
+                    <p>Delivery Man: @GetDeliveryManName(@parcel.DeliveryManID)</p>  @* Display DeliveryManID as a paragraph (you may replace this with actual delivery man's name from another source if available) *@
+                    <p>Delivery History: @GetDeliveryHistoryDescriptionForParcel(@parcel.ParcelID)</p>  @* Display DeliveryStatus as a paragraph *@
+                </div>
+                <div class="modal" id="userModal-@parcel.ParcelID">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="modal-body">
+                        <div class="user-info">
+                            <div class="left-info">
+                                <p><strong>Parcel ID:</strong> @parcel.ParcelID</p>
+                                <hr>
+
+                                <p><strong>Sender:</strong>
+                                <p><strong>Name:</strong> @parcel.SenderName</p>
+                                <p><strong>Tel:</strong> @parcel.SenderTelNo</p>
+                                <hr>
+
+                                <p><strong>Location:</strong>
+                                <p><strong>Delivery address:</strong> @parcel.DeliveryAddress</p>
+                                <p><strong>From City:</strong> @parcel.FromCity</p>
+                                <p><strong>To City:</strong> @parcel.ToCity</p>
+                                <hr>
+                                    <p><strong>Delivery Man:</strong> @GetDeliveryManName(@parcel.DeliveryManID)</p>
+                                    <p><strong>Delivery History:</strong> @GetDeliveryHistoryDescriptionForParcel(@parcel.ParcelID)</p>
+                            </div>
+                            <div class="right-info">
+                                    <p><strong>Status:</strong> @GetDeliveryStatusText(@parcel.DeliveryStatus)</p>
+                                <hr>
+
+                                <p><strong>Receiver:</strong>
+                                <p><strong>Name:</strong> @parcel.ReceiverName</p>
+                                <p><strong>Tel:</strong> @parcel.ReceiverTelNo</p>
+                                <hr>
+
+
+                                <p><strong>Parcel Details:</strong>
+                                <p><strong>Weight:</strong> @parcel.ParcelWeight</p>
+                                <p><strong>Charge:</strong> @parcel.DeliveryCharge</p>
+                                <p><strong>Currency:</strong> @parcel.Currency</p>
+                                <hr>
+                                <p><strong>Item Description:</strong> @parcel.ItemDescription</p>
+                                <p><strong>Target Delivery Date:</strong> @parcel.TargetDeliveryDate</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    
+
+    <template data-user-template>
+        <div class="card" data-user-id="">
+            <div class="head" data-head></div>
+            <div class="body" data-body></div>
+        </div>
+    </template>
+
+    <!-- Tracking Js Section -->
+    <script src="~/js/tracking.js" asp-append-version="true"></script>
+
+</body>
+</html>
+
+@functions {
+    public string GetDeliveryStatusText(string deliveryStatus)
+    {
+        switch (deliveryStatus)
+        {
+            case "0":
+                return "Pending Delivery";
+            case "1":
+                return "Delivery to Destination in Progress";
+            case "2":
+                return "Delivery to Airport in Progress";
+            case "3":
+                return "Delivery Completed";
+            case "4":
+                return "Delivery Failed";
+            default:
+                return "";
+        }
+    }
+
+    public string GetDeliveryManName(int? deliveryManID)
+    {
+        if (ViewData["deliveryMenList"] is List<Staff> deliveryMenList)
+        {
+            var deliveryMan = deliveryMenList.FirstOrDefault(d => d.StaffID == deliveryManID);
+            return deliveryMan != null ? deliveryMan.StaffName : "N/A"; // Return the name or "N/A" if not found
+        }
+
+        return "N/A"; // Return "N/A" if deliveryMenList is not available in ViewData
+    }
+
+    public string GetDeliveryHistoryDescriptionForParcel(int parcelID)
+    {
+        List<DeliveryHistory> deliveryHistoryList = ViewData["deliveryHistoryList"] as List<DeliveryHistory>;
+        // Find the latest delivery history for the specified parcel based on the ParcelID
+        DeliveryHistory latestDeliveryHistory = deliveryHistoryList
+            .Where(dh => dh.ParcelID == parcelID)
+            .OrderByDescending(dh => dh.RecordID)
+            .FirstOrDefault();
+
+        Console.WriteLine(latestDeliveryHistory?.Description);
+        // If the latestDeliveryHistory is not null, return its description; otherwise, return an empty string or null as per your requirement.
+        return latestDeliveryHistory?.Description ?? "";
+    }
+}

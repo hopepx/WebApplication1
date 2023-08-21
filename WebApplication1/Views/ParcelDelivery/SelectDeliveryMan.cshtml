@@ -1,0 +1,158 @@
+﻿@model WebApplication1.Models.Parcel
+
+@{
+    ViewData["Title"] = "SelectDeliveryMan";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Tracking</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/customertrackingtracked.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        @await Html.PartialAsync("~/Views/Home/_SMMenu.cshtml")
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Main Content Section -->
+    <main>
+        <div class="tracking-summary">
+            <h2>Tracking Summary</h2>
+            <label for="parcel-id">Parcel ID: @Model.ParcelID</label>
+            <label for="order-date">Target Order Date: @(Model.TargetDeliveryDate?.ToString("dd/MM/yy") ?? "")</label>
+            <label for="status">Status: @GetDeliveryStatusText(Model.DeliveryStatus)</label>
+            <label asp-for="DeliveryManID">Select Delivery man ID:</label>
+            <select asp-for="DeliveryManID" asp-items=" @ViewData["deliveryManList"] as List<SelectListItem>" class="form-select">
+                
+            </select>
+            
+        </div>
+        <br><br><br>
+        <form class="tracking-form" method="post" asp-action="UpdateDevStatus">
+            
+            <input type="submit" value="Assign">
+        </form>
+        <!-- 'Assign' button 
+        <form method="post" asp-action="UpdateDevStatus">
+            <buttton type="submit"  class="button" >Assign</buttton>
+        </form>
+        -->
+    </main>
+</body>
+</html>
+
+@functions {
+    public string GetDeliveryStatusText(string deliveryStatus)
+    {
+        switch (deliveryStatus)
+        {
+            case "0":
+                return "Pending Delivery";
+            case "1":
+                return "Delivery to Destination in Progress";
+            case "2":
+                return "Delivery to Airport in Progress";
+            case "3":
+                return "Delivery Completed";
+            case "4":
+                return "Delivery Failed";
+            default:
+                return "";
+        }
+    }
+}
+
+<!--
+<h4>Parcel Details: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SelectDeliveryMan" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h4><label for="parcelId">Parcel ID:</label>
+            <span id="parcelId">123456</span><br></h4>
+
+            <label for="orderDate">Order Date:</label>
+            <span id="orderDate">2023-07-01</span><br>
+
+            <label for="status">Status:</label>
+            <span id="status">Unassigned</span><br>
+
+            <label for="deliveryMan">Delivery Man:</label>
+            <select id="deliveryMan" name="deliveryMan" required>
+                <option value="">Select Delivery Man</option>
+                <option value="deliveryMan1">100</option>
+                <option value="deliveryMan2">113</option>
+                 //Add more options as needed
+            </select><br>
+            <div class="form-group">
+                <input type="submit" value="Assign" class="btn btn-primary" onclick="showPopup()" />
+            </div>
+        </form>
+         //Bootstrap Modal
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Success</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Delivery man assigned successfully!!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        // Add Bootstrap JS and jQuery scripts here
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#successModal').on('hidden.bs.modal', function () {
+                    window.location.href = '/Home/Index'; // Replace with index page URL
+                });
+            });
+            function showPopup() {
+                $('#successModal').modal('show'); // Display the Bootstrap modal
+            }
+        </script>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>-->
+    

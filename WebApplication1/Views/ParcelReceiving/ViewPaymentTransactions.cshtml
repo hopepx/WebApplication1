@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplication1.Models.PaymentTransaction>
+
+@{
+    ViewData["Title"] = "ViewPaymentTransactions";
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<header class="header">
+    @await Html.PartialAsync("~/Views/Home/_FOSMenu.cshtml")
+</header>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<partial name="~/Views/ParcelReceiving/_ViewPaymentTransactions.cshtml" model="@Model" />

@@ -1,0 +1,34 @@
+﻿@{
+    string userName = Context.Session.GetString("Name");
+}
+
+<nav class="nav">
+    <a href="~/Home/Dashboard" class="nav_logo">
+        <i class="fa-sharp fa-solid fa-truck fa-bounce"></i> NP Courier Service
+    </a>
+
+
+    <ul class="nav_items">
+        <li class="nav_item">
+            <a href="~/Home/Dashboard" class="nav_link">Home</a>
+            <a href="~/Home/Dashboard#about" class="nav_link">About</a>
+            <a href="~/ParcelTracking/CustomerTracking" class="nav_link">Tracking</a>
+            <a href="~/ParcelTracking/MakeFeedback" class="nav_link">Feedback</a>
+            <a href="~/Home/Dashboard#faq" class="nav_link">FAQ</a>
+            <a href="~/ParcelTracking/Contact" class="nav_link">Contact</a>
+        </li>
+    </ul>
+
+
+
+    <div class="dropdown">
+        <button class="button dropdown-toggle" id="login-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class='bx bxs-user'></i> @userName
+        </button>
+        <div class="dropdown-menu" aria-labelledby="login-dropdown">
+            <a href="~/Home/LogOut" class="dropdown-item">
+                <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i> Logout
+            </a>
+        </div>
+    </div>
+</nav>
